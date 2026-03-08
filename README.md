@@ -8,6 +8,21 @@
 
 ## ✨ 效果预览
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/ghostty-preview.png" alt="Ghostty Terminal" width="100%"/>
+      <br/>
+      <sub>Ghostty 终端 - 磨砂玻璃质感</sub>
+    </td>
+    <td align="center">
+      <img src="assets/opencode-preview.png" alt="OpenCode Interface" width="100%"/>
+      <br/>
+      <sub>OpenCode AI 助手 - 透明主题</sub>
+    </td>
+  </tr>
+</table>
+
 - 🧊 **磨砂玻璃质感**：半透明背景配合 macOS 原生模糊效果
 - 🎨 **Catppuccin Mocha 主题**：柔和的紫粉色调，护眼的深色主题
 - 🔤 **优雅的编程字体**：Maple Mono 连字体 + 苹方中文字体
