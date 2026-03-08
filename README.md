@@ -5,6 +5,17 @@
 ![preview](https://img.shields.io/badge/theme-Catppuccin%20Mocha-mauve?style=flat-square)
 ![terminal](https://img.shields.io/badge/terminal-Ghostty-blue?style=flat-square)
 ![ai](https://img.shields.io/badge/AI-OpenCode-green?style=flat-square)
+[![brew](https://img.shields.io/badge/install-homebrew-orange?style=flat-square)](https://github.com/jqlong17/homebrew-cora-theme)
+
+## 🚀 快速安装（推荐）
+
+一行命令搞定全套配置：
+
+```bash
+brew tap ruska/cora-theme && brew install cora-theme && cora-theme-install
+```
+
+安装后重启 Ghostty 和 OpenCode 即可享受美观的终端主题！
 
 ## ✨ 效果预览
 
