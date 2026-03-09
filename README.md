@@ -9,11 +9,20 @@
 
 ## 🚀 快速安装（推荐）
 
-一行命令搞定全套配置：
+### 方式一：Homebrew（macOS 推荐）
 
 ```bash
 brew tap ruska/cora-theme && brew install cora-theme && cora-theme-install
 ```
+
+### 方式二：curl 一键安装（通用，无需 Homebrew）
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jqlong17/cora-theme/main/install.sh | bash
+```
+
+**支持平台：** macOS、Linux  
+**特点：** 自动安装 Maple Mono 字体、备份现有配置、跨平台兼容
 
 安装后重启 Ghostty 和 OpenCode 即可享受美观的终端主题！
 
