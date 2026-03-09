@@ -146,6 +146,7 @@ install_opencode_config() {
 # Install fonts
 install_fonts() {
     print_info "Installing fonts..."
+    local font_install_failed=false
     
     if [[ "$OS" == "macos" ]]; then
         # Check if Maple Mono is installed
@@ -154,13 +155,30 @@ install_fonts() {
             print_info "Installing via Homebrew..."
             
             if command -v brew &> /dev/null; then
-                brew tap subframe7536/maple-font
-                brew install --cask maple-mono
-                print_success "Maple Mono installed via Homebrew"
+                # Try to install via Homebrew
+                if brew tap subframe7536/maple-font 2>/dev/null && \
+                   brew install --cask maple-mono 2>/dev/null; then
+                    print_success "Maple Mono installed via Homebrew"
+                else
+                    print_error "Failed to install Maple Mono via Homebrew"
+                    font_install_failed=true
+                fi
             else
                 print_warning "Homebrew not found"
-                print_info "Please manually install Maple Mono from:"
-                print_info "https://github.com/subframe7536/maple-font/releases"
+                font_install_failed=true
+            fi
+            
+            # If installation failed, provide manual instructions
+            if [[ "$font_install_failed" == true ]]; then
+                echo ""
+                print_info "📋 Manual font installation required:"
+                print_info "1. Download Maple Mono from:"
+                print_info "   https://github.com/subframe7536/maple-font/releases"
+                print_info "2. Double-click the .ttf files to install"
+                print_info "3. Restart Ghostty after installation"
+                echo ""
+                print_warning "Font installation incomplete - you can continue without it"
+                print_info "The theme will work, but may use fallback fonts"
             fi
         else
             print_success "Maple Mono font already installed"
@@ -176,17 +194,22 @@ install_fonts() {
         local temp_dir=$(mktemp -d)
         cd "$temp_dir"
         
-        curl -fsSL "https://github.com/subframe7536/maple-font/releases/latest/download/MapleMono-NF-CN.zip" -o maple-mono.zip
-        unzip -q maple-mono.zip -d maple-mono
-        cp maple-mono/*.ttf "$font_dir/" 2>/dev/null || cp maple-mono/*/*.ttf "$font_dir/"
-        
-        # Refresh font cache
-        fc-cache -f
+        if curl -fsSL "https://github.com/subframe7536/maple-font/releases/latest/download/MapleMono-NF-CN.zip" -o maple-mono.zip 2>/dev/null; then
+            unzip -q maple-mono.zip -d maple-mono
+            cp maple-mono/*.ttf "$font_dir/" 2>/dev/null || cp maple-mono/*/*.ttf "$font_dir/"
+            
+            # Refresh font cache
+            fc-cache -f
+            
+            print_success "Maple Mono installed to $font_dir"
+        else
+            print_error "Failed to download Maple Mono"
+            print_info "Please manually install from:"
+            print_info "https://github.com/subframe7536/maple-font/releases"
+        fi
         
         cd - > /dev/null
         rm -rf "$temp_dir"
-        
-        print_success "Maple Mono installed to $font_dir"
     fi
 }
 

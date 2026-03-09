@@ -12,7 +12,7 @@
 ### 方式一：Homebrew（macOS 推荐）
 
 ```bash
-brew tap ruska/cora-theme && brew install cora-theme && cora-theme-install
+brew tap jqlong17/cora-theme && brew install cora-theme && cora-theme-install
 ```
 
 ### 方式二：curl 一键安装（通用，无需 Homebrew）
